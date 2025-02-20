@@ -23,19 +23,17 @@ public interface GoodsDao {
 
     /**
      * 获取列表
-     * @param page
+     * @param begin
      * @param size
      * @return
      */
-    @Select("select * from goods order by id desc limit #{begin}, #{size}")
-    public List<Goods> getList(@Param("begin")int begin, @Param("size")int size);
+    List<Goods> getList(int begin, int size);
 
     /**
      * 获取总数
      * @return
      */
-    @Select("select count(*) from goods")
-    public long getTotal();
+     long getTotal();
 
     /**
      * 通过类型获取列表

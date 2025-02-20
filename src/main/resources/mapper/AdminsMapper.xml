@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.AdminsDao" >
-  <resultMap id="BaseResultMap" type="com.entity.Admins" >
+
+<mapper namespace="com.hl.book_stall.dao.AdminsDao" >
+
+  <resultMap id="BaseResultMap" type="com.hl.book_stall.entity.Admins" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     id, username, password
   </sql>
+
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from admins
-    where id = #{id,jdbcType=INTEGER}
+      select
+      <include refid="Base_Column_List"/>
+      from admins
+      where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="getByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from admins where username=#{username}
+  </select>
+
+  <select id="getByUsernameAndPassword" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from admins where username=#{username} and password=#{password}
+  </select>
+
+  <select id="getList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from admins order by id desc limit #{begin}, #{size}
+  </select>
+
+  <select id="getTotal"  resultType="java.lang.Long">
+    select count(*) from admins
+  </select>
+
   <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from admins
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.entity.Admins" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
@@ -26,6 +48,7 @@
     insert into admins (username, password)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.entity.Admins" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
@@ -48,6 +71,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByIdSelective" parameterType="com.entity.Admins" >
     update admins
     <set >
@@ -60,10 +84,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateById" parameterType="com.entity.Admins" >
     update admins
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>
