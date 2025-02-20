@@ -1,4 +1,4 @@
-package com.hl.book_stall.controller;
+package com.hl.book_stall.interceptor;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
