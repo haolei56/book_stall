@@ -38,36 +38,32 @@ public interface GoodsDao {
     /**
      * 通过类型获取列表
      * @param typeid
-     * @param page
+     * @param begin
      * @param size
      * @return
      */
-    @Select("select * from goods where type_id=#{typeid} order by id desc limit #{begin}, #{size}")
-    public List<Goods> getListByType(@Param("typeid")int typeid, @Param("begin")int begin, @Param("size")int size);
+     List<Goods> getListByType(int typeid, int begin, int size);
 
     /**
      * 通过类型获取总数
      * @param typeid
      * @return
      */
-    @Select("select count(*) from goods where type_id=#{typeid}")
-    public long getTotalByType(@Param("typeid")int typeid);
+    long getTotalByType(int typeid);
 
     /**
      * 通过名称获取列表
      * @param name
-     * @param page
+     * @param begin
      * @param size
      * @return
      */
-    @Select("select * from goods where name like concat('%',#{name},'%') order by id desc limit #{begin}, #{size}")
-    public List<Goods> getListByName(@Param("name")String name, @Param("begin")int begin, @Param("size")int size);
+     List<Goods> getListByName(String name,int begin, int size);
 
     /**
      * 通过名称获取总数
      * @param name
      * @return
      */
-    @Select("select count(*) from goods where name like concat('%',#{name},'%')")
-    public long getTotalByName(@Param("name")String name);
+    long getTotalByName(String name);
 }

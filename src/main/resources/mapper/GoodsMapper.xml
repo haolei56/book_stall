@@ -25,13 +25,30 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="getList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getList" resultMap="BaseResultMap" parameterType="map" >
     select * from goods order by id desc limit #{begin}, #{size}
   </select>
 
   <select id="getTotal" resultType="java.lang.Long"  >
     select count(*) from goods
   </select>
+
+  <select id="getListByType" parameterType="map" resultMap="BaseResultMap"  >
+    select * from goods where type_id=#{typeid} order by id desc limit #{begin}, #{size}
+  </select>
+
+  <select id="getTotalByType" parameterType="java.lang.Integer" resultType="java.lang.Long"  >
+    select count(*) from goods where type_id=#{typeid}
+  </select>
+
+  <select id="getListByName" parameterType="map" resultMap="BaseResultMap"  >
+    select * from goods where name like concat('%',#{name},'%') order by id desc limit #{begin}, #{size}
+  </select>
+
+  <select id="getTotalByName" parameterType="String" resultType="java.lang.Long">
+    select count(*) from goods where name like concat('%',#{name},'%')
+  </select>
+
 
   <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from goods

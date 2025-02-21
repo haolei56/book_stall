@@ -1,6 +1,7 @@
 package com.hl.book_stall.dao;
 
 import com.hl.book_stall.entity.Items;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -23,9 +24,7 @@ public interface ItemsDao {
 
     /**
      * 订单项列表
-     * @param Ordersid
-     * @param page
-     * @param rows
+     * @param orderid
      * @return
      */
     @Select("select * from items where order_id=#{orderid}")
