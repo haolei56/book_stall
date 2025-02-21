@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hl.book_stall.dao.GoodsDao" >
 
-  <resultMap id="BaseResultMap" type="com.hl.book_stall.entity.Goods" >
+<mapper namespace="com.hl.book_stall.dao.GoodsDao" >
+  <resultMap id="BaseResultMap" type="Goods" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="cover" property="cover" jdbcType="VARCHAR" />
@@ -55,7 +55,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.entity.Goods" >
+  <insert id="insert" parameterType="Goods" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -67,7 +67,7 @@
       #{stock,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER})
   </insert>
 
-  <insert id="insertSelective" parameterType="com.entity.Goods" >
+  <insert id="insertSelective" parameterType="Goods" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -126,7 +126,7 @@
     </trim>
   </insert>
 
-  <update id="updateByIdSelective" parameterType="com.entity.Goods" >
+  <update id="updateByIdSelective" parameterType="Goods" >
     update goods
     <set >
       <if test="name != null" >
@@ -157,7 +157,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <update id="updateById" parameterType="com.entity.Goods" >
+  <update id="updateById" parameterType="Goods" >
     update goods
     set name = #{name,jdbcType=VARCHAR},
       cover = #{cover,jdbcType=VARCHAR},

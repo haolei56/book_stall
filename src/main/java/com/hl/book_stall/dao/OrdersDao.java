@@ -1,6 +1,8 @@
 package com.hl.book_stall.dao;
 
 import com.hl.book_stall.entity.Orders;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -24,16 +26,14 @@ public interface OrdersDao {
 
     /**
      * 获取列表
-     * @param status
-     * @param page
-     * @param row
+     * @param size
+     * @param begin
      */
     @Select("select * from orders order by id desc limit #{begin}, #{size}")
     public List<Orders> getList(@Param("begin")int begin, @Param("size")int size);
 
     /**
      * 获取总数
-     * @param status
      * @return
      */
     @Select("select count(*) from orders")
@@ -42,8 +42,8 @@ public interface OrdersDao {
     /**
      * 获取列表
      * @param status
-     * @param page
-     * @param row
+     * @param size
+     * @param begin
      */
     @Select("select * from orders where status=#{status} order by id desc limit #{begin}, #{size}")
     public List<Orders> getListByStatus(@Param("status")byte status, @Param("begin")int begin, @Param("size")int size);

@@ -3,7 +3,7 @@
 
 <mapper namespace="com.hl.book_stall.dao.AdminsDao" >
 
-  <resultMap id="BaseResultMap" type="com.hl.book_stall.entity.Admins" >
+  <resultMap id="BaseResultMap" type="Admins" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -24,11 +24,11 @@
     select * from admins where username=#{username}
   </select>
 
-  <select id="getByUsernameAndPassword" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="getByUsernameAndPassword" parameterType="map" resultMap="BaseResultMap">
     select * from admins where username=#{username} and password=#{password}
   </select>
 
-  <select id="getList" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="getList" parameterType="map" resultMap="BaseResultMap">
     select * from admins order by id desc limit #{begin}, #{size}
   </select>
 
@@ -41,7 +41,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.entity.Admins" >
+  <insert id="insert" parameterType="Admins" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -49,7 +49,7 @@
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
   </insert>
 
-  <insert id="insertSelective" parameterType="com.entity.Admins" >
+  <insert id="insertSelective" parameterType="Admins" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -72,7 +72,7 @@
     </trim>
   </insert>
 
-  <update id="updateByIdSelective" parameterType="com.entity.Admins" >
+  <update id="updateByIdSelective" parameterType="Admins" >
     update admins
     <set >
       <if test="username != null" >
@@ -85,7 +85,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <update id="updateById" parameterType="com.entity.Admins" >
+  <update id="updateById" parameterType="Admins" >
     update admins
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}

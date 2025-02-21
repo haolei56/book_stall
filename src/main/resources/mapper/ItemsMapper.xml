@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hl.book_stall.dao.ItemsDao" >
 
-  <resultMap id="BaseResultMap" type="com.hl.book_stall.entity.Items" >
+  <resultMap id="BaseResultMap" type="Items" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="amount" property="amount" jdbcType="INTEGER" />
@@ -26,7 +26,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.hl.book_stall.entity.Items" >
+  <insert id="insert" parameterType="Items" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -36,7 +36,7 @@
       #{goodId,jdbcType=INTEGER})
   </insert>
 
-  <insert id="insertSelective" parameterType="com.hl.book_stall.entity.Items" >
+  <insert id="insertSelective" parameterType="Items" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -71,7 +71,7 @@
     </trim>
   </insert>
 
-  <update id="updateByIdSelective" parameterType="com.hl.book_stall.entity.Items" >
+  <update id="updateByIdSelective" parameterType="Items" >
     update items
     <set >
       <if test="price != null" >
@@ -90,7 +90,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <update id="updateById" parameterType="com.hl.book_stall.entity.Items" >
+  <update id="updateById" parameterType="Items" >
     update items
     set price = #{price,jdbcType=INTEGER},
       amount = #{amount,jdbcType=INTEGER},

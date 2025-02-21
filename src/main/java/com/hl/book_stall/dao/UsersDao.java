@@ -1,6 +1,8 @@
 package com.hl.book_stall.dao;
 
 import com.hl.book_stall.entity.Users;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -39,8 +41,8 @@ public interface UsersDao {
 
     /**
      * 获取列表
-     * @param page
-     * @param rows
+     * @param size
+     * @param begin
      * @return 无记录返回空集合
      */
     @Select("select * from users order by id desc limit #{begin}, #{size}")

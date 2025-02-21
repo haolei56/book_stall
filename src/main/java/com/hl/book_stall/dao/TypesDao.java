@@ -1,6 +1,7 @@
 package com.hl.book_stall.dao;
 
 import com.hl.book_stall.entity.Types;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
