@@ -59,6 +59,10 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // Exclude logback-classic if you are using log4j-slf4j-impl
+    implementation('org.springframework.boot:spring-boot-starter-logging') {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
     // Spring Boot Log4j2依赖，支持使用Log4j2进行日志记录
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
