@@ -16,8 +16,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
      * 检测登录状态
      */
     @Override
-    public boolean preHandle(HttpServletRequest request,
-                             HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
         if(uri.contains("css/") || uri.contains("js/") || uri.contains("img/")
                 || uri.contains("login") || uri.contains("logout")) {
