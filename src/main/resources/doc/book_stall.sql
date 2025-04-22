@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : 本机Localhost
 Source Server Version : 50717
 Source Host           : localhost:3306
-Source Database       : shxx
+Source Database       : book_stall
 
 Target Server Type    : MYSQL
 Target Server Version : 50717
@@ -12,7 +12,8 @@ File Encoding         : 65001
 
 Date: 2018-04-20 15:02:36
 */
-
+CREATE DATABASE IF NOT EXISTS book_stall;
+USE book_stall;
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
