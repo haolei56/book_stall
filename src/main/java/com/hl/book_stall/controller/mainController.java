@@ -5,8 +5,7 @@ import com.hl.book_stall.service.GoodService;
 import com.hl.book_stall.service.TopService;
 import com.hl.book_stall.service.TypeService;
 import com.hl.book_stall.util.PageUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,18 +23,14 @@ import java.util.Objects;
 //Controller注解用于标识该类是一个控制器类，前后端没分离时使用该注解
 // 前后端分离后react需返回JSON格式的数据，使用restful格式的注解
 @RestController
-@RequestMapping("/index")
-public class IndexController{
+@RequiredArgsConstructor
+@RequestMapping("/main")
+public class mainController {
 
     private static final int rows = 16; // 默认每页数量
-
-    @Autowired
-    private TopService topService;
-    @Autowired
-    private GoodService goodService;
-    @Autowired
-    private TypeService typeService;
-
+    private final TopService topService;
+    private final GoodService goodService;
+    private final TypeService typeService;
 
     /**
      * 首页
@@ -53,6 +48,8 @@ public class IndexController{
     // }
 
     //前后端分离时的写法，返回JSON格式的数据
+    //@RequestMapping是一个通用的请求映射注解，可以处理所有HTTP方法（GET、POST、PUT、DELETE等）的请求。
+    //@GetMapping是@RequestMapping的一个特定变体，用于处理HTTP GET请求。
     @GetMapping("/index")
     public Map<String, Object> getIndexData() {
         Map<String, Object> context = new HashMap<>();
@@ -65,10 +62,10 @@ public class IndexController{
     }
 
 
-    // /**
-    //  * 推荐列表
-    //  * @return
-    //  */
+    /**
+     * 推荐列表
+     * @return
+     */
     // @RequestMapping("/top")
     // public String tops(int typeid, @RequestParam(required=false, defaultValue="1")int page, HttpServletRequest request) {
     //     request.setAttribute("flag", typeid==2 ? 7 : 8);

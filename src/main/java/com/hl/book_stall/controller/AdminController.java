@@ -5,6 +5,8 @@ import com.hl.book_stall.service.*;
 import com.hl.book_stall.util.PageUtil;
 import com.hl.book_stall.util.SafeUtil;
 import com.hl.book_stall.util.UploadUtil;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,23 +19,18 @@ import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/admin")
 public class AdminController {
 
     private static final int rows = 10;
 
-    @Autowired
-    private AdminService adminService;
-    @Autowired
-    private OrderService orderService;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private GoodService goodService;
-    @Autowired
-    private TopService topService;
-    @Autowired
-    private TypeService typeService;
+    private final AdminService adminService;
+    private final OrderService orderService;
+    private final UserService userService;
+    private final GoodService goodService;
+    private final TopService topService;
+    private final TypeService typeService;
 
     /**
      * 管理员登录
