@@ -25,7 +25,7 @@ import java.util.Objects;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/main")
-public class mainController {
+public class MainController {
 
     private static final int rows = 16; // 默认每页数量
     private final TopService topService;
