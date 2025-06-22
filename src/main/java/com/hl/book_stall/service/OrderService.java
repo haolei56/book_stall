@@ -5,6 +5,7 @@ import com.hl.book_stall.dao.OrdersDao;
 import com.hl.book_stall.entity.Goods;
 import com.hl.book_stall.entity.Items;
 import com.hl.book_stall.entity.Orders;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,14 +20,15 @@ import java.util.List;
  */
 @Service    // 注解为service层spring管理bean
 @Transactional    // 注解此类所有方法加入spring事务, 具体设置默认
+@RequiredArgsConstructor
 public class OrderService {
 
-    @Autowired
-    private OrdersDao orderDao;
-    @Autowired
-    private ItemsDao itemDao;
-    @Autowired
-    private GoodService goodService;
+
+    private final OrdersDao orderDao;
+
+    private final ItemsDao itemDao;
+
+    private final GoodService goodService;
 
 
     /**

@@ -2,7 +2,9 @@ package com.hl.book_stall.service;
 
 import com.hl.book_stall.dao.TopsDao;
 import com.hl.book_stall.entity.Tops;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,13 +17,11 @@ import java.util.Objects;
  */
 @Service    // 注解为service层spring管理bean
 @Transactional    // 注解此类所有方法加入spring事务, 具体设置默认
+@RequiredArgsConstructor
 public class TopService {
 
-    @Autowired
-    private TopsDao topDao;
-    @Autowired
-    private GoodService goodService;
 
+    private final TopsDao topDao;
 
     /**
      * 获取列表
@@ -29,9 +29,9 @@ public class TopService {
      */
     public List<Tops> getList(byte type, int page, int size){
         List<Tops> topList = topDao.getList(type, (page-1)*size, size);
-        for(Tops top : topList) {
-            top.setGood(goodService.get(top.getGoodId()));
-        }
+    //     for(Tops top : topList) {
+    //         top.setGood(goodService.get(top.getGoodId()));
+    //     }
         return topList;
     }
 

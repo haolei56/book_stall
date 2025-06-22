@@ -1,6 +1,7 @@
 package com.hl.book_stall.dao;
 
 import com.hl.book_stall.entity.Items;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  * @author hl
  * @date 2025/2/19
  */
+@Mapper
 public interface ItemsDao {
     int deleteById(Integer id);
 

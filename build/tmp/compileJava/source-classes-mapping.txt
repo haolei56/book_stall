@@ -10,8 +10,6 @@ com/hl/book_stall/entity/Orders.java
  com.hl.book_stall.entity.Orders
 com/hl/book_stall/service/AdminService.java
  com.hl.book_stall.service.AdminService
-com/hl/book_stall/controller/IndexController.java
- com.hl.book_stall.controller.IndexController
 com/hl/book_stall/util/SafeUtil.java
  com.hl.book_stall.util.SafeUtil
 com/hl/book_stall/interceptor/AdminInterceptor.java
@@ -22,6 +20,8 @@ com/hl/book_stall/service/UserService.java
  com.hl.book_stall.service.UserService
 com/hl/book_stall/entity/Goods.java
  com.hl.book_stall.entity.Goods
+com/hl/book_stall/controller/MainController.java
+ com.hl.book_stall.controller.MainController
 com/hl/book_stall/controller/AdminController.java
  com.hl.book_stall.controller.AdminController
 com/hl/book_stall/dao/UsersDao.java

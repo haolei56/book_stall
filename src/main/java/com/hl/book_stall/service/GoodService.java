@@ -3,6 +3,7 @@ package com.hl.book_stall.service;
 import com.hl.book_stall.dao.GoodsDao;
 import com.hl.book_stall.entity.Goods;
 import com.hl.book_stall.entity.Tops;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +17,15 @@ import java.util.Objects;
  * @date 2025/2/19
  */
 @Service    // 注解为service层spring管理bean
-@Transactional    // 注解此类所有方法加入spring事务, 具体设置默认
+@Transactional // 注解此类所有方法加入spring事务, 具体设置默认
+@RequiredArgsConstructor
 public class GoodService {
 
-    @Autowired
-    private GoodsDao goodDao;
-    @Autowired
-    private TopService topService;
-    @Autowired
-    private TypeService typeService;
+    private final GoodsDao goodDao;
+
+    private final TopService topService;
+
+    private final TypeService typeService;
 
 
     /**
@@ -99,7 +100,7 @@ public class GoodService {
 
     /**
      * 通过id获取
-     * @param productid
+     * @param id
      * @return
      */
     public Goods get(int id) {
@@ -112,7 +113,7 @@ public class GoodService {
 
     /**
      * 添加
-     * @param product
+     * @param  good
      */
     public Integer add(Goods good) {
         return goodDao.insert(good);
@@ -120,7 +121,7 @@ public class GoodService {
 
     /**
      * 修改
-     * @param product
+     * @param  good
      * @return
      */
     public boolean update(Goods good) {
@@ -130,7 +131,7 @@ public class GoodService {
     /**
      * 删除商品
      * 先删除此商品的推荐信息
-     * @param product
+     * @param  goodid
      */
     public boolean delete(int goodid) {
         topService.deleteByGoodid(goodid);

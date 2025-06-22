@@ -1,12 +1,15 @@
 package com.hl.book_stall.dao;
 
 import com.hl.book_stall.entity.Admins;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
 /**
  * @author hl
  * @date 2025/2/19
  */
+@Mapper
 public interface AdminsDao {
     int deleteById(Integer id);
 

@@ -3,6 +3,7 @@ package com.hl.book_stall.service;
 import com.hl.book_stall.dao.UsersDao;
 import com.hl.book_stall.entity.Users;
 import com.hl.book_stall.util.SafeUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +16,11 @@ import java.util.List;
  */
 @Service    // 注解为service层spring管理bean
 @Transactional    // 注解此类所有方法加入spring事务, 具体设置默认
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired        //spring注入类对象
-    private UsersDao userDao;
+    //spring注入类对象
+    private final UsersDao userDao;
 
     /**
      * 验证用户密码
@@ -95,7 +97,7 @@ public class UserService {
 
     /**
      * 删除
-     * @param id
+     * @param user
      */
     public boolean delete(Users user) {
         return userDao.deleteById(user.getId()) > 0;

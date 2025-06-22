@@ -221,21 +221,21 @@ public class AdminController {
         return "redirect:userList?flag=2&page="+page;
     }
 
-    /**
-     * 产品列表
-     *
-     * @return
-     */
-    @RequestMapping("/goodList")
-    public String goodList(@RequestParam(required=false, defaultValue="0")byte status, HttpServletRequest request,
-                           @RequestParam(required=false, defaultValue="1") int page) {
-        request.setAttribute("flag", 3);
-        request.setAttribute("page", page);
-        request.setAttribute("status", status);
-        request.setAttribute("goodList", goodService.getList(status, page, rows));
-        request.setAttribute("pageTool", PageUtil.getPageTool(request, goodService.getTotal(status), page, rows));
-        return "/admin/good_list.jsp";
-    }
+    // /**
+    //  * 产品列表
+    //  *
+    //  * @return
+    //  */
+    // @RequestMapping("/goodList")
+    // public String goodList(@RequestParam(required=false, defaultValue="0")byte status, HttpServletRequest request,
+    //                        @RequestParam(required=false, defaultValue="1") int page) {
+    //     request.setAttribute("flag", 3);
+    //     request.setAttribute("page", page);
+    //     request.setAttribute("status", status);
+    //     request.setAttribute("goodList", goodService.getList(status, page, rows));
+    //     request.setAttribute("pageTool", PageUtil.getPageTool(request, goodService.getTotal(status), page, rows));
+    //     return "/admin/good_list.jsp";
+    // }
 
     /**
      * 产品添加
@@ -314,17 +314,17 @@ public class AdminController {
         return "redirect:goodList?flag=3&page="+page;
     }
 
-    /**
-     * 产品删除
-     *
-     * @return
-     */
-    @RequestMapping("/goodDelete")
-    public String goodDelete(int id,
-                             @RequestParam(required=false, defaultValue="1") int page) {
-        goodService.delete(id);
-        return "redirect:goodList?flag=3&page="+page;
-    }
+    // /**
+    //  * 产品删除
+    //  *
+    //  * @return
+    //  */
+    // @RequestMapping("/goodDelete")
+    // public String goodDelete(int id,
+    //                          @RequestParam(required=false, defaultValue="1") int page) {
+    //     goodService.delete(id);
+    //     return "redirect:goodList?flag=3&page="+page;
+    // }
 
     /**
      * 添加推荐

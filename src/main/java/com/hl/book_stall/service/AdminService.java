@@ -3,6 +3,7 @@ package com.hl.book_stall.service;
 import com.hl.book_stall.dao.AdminsDao;
 import com.hl.book_stall.entity.Admins;
 import com.hl.book_stall.util.SafeUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +16,10 @@ import java.util.List;
  */
 @Service    // 注解为service层spring管理bean
 @Transactional    // 注解此类所有方法加入spring事务, 具体设置默认
+@RequiredArgsConstructor
 public class AdminService {
 
-    @Autowired
-    private AdminsDao adminDao;
+    private final AdminsDao adminDao;
 
 
     /**
@@ -87,7 +88,7 @@ public class AdminService {
 
     /**
      * 更新
-     * @param user
+     * @param  admin
      */
     public boolean update(Admins admin) {
         return adminDao.updateById(admin) > 0;
@@ -95,7 +96,7 @@ public class AdminService {
 
     /**
      * 删除
-     * @param user
+     * @param  admin
      */
     public boolean delete(Admins admin) {
         return adminDao.deleteById(admin.getId()) > 0;

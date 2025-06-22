@@ -2,6 +2,7 @@ package com.hl.book_stall.service;
 
 import com.hl.book_stall.dao.TypesDao;
 import com.hl.book_stall.entity.Types;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,10 +15,10 @@ import java.util.List;
  */
 @Service    // 注解为service层spring管理bean
 @Transactional    // 注解此类所有方法加入spring事务, 具体设置默认
+@RequiredArgsConstructor
 public class TypeService {
 
-    @Autowired
-    private TypesDao typeDao;
+    private final TypesDao typeDao;
 
 
     /**

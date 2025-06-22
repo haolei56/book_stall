@@ -59,15 +59,10 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    // Exclude logback-classic if you are using log4j-slf4j-impl
-    implementation('org.springframework.boot:spring-boot-starter-logging') {
-        exclude group: 'ch.qos.logback', module: 'logback-classic'
-    }
-    // Spring Boot Log4j2依赖，支持使用Log4j2进行日志记录
-    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-
     // Druid数据源依赖,使用Druid作为数据源，可以提供更高效的连接池管理、更丰富的监控和统计功能，以及更灵活的配置选项
     implementation 'com.alibaba:druid-spring-boot-starter:1.2.8'
+
+    implementation 'commons-fileupload:commons-fileupload:1.4'
 }
 
 tasks.named('test') {
