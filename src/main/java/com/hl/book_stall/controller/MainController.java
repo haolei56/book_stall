@@ -47,19 +47,19 @@ public class MainController {
     //     return "/index/index.jsp";
     // }
 
-    //前后端分离时的写法，返回JSON格式的数据
-    //@RequestMapping是一个通用的请求映射注解，可以处理所有HTTP方法（GET、POST、PUT、DELETE等）的请求。
-    //@GetMapping是@RequestMapping的一个特定变体，用于处理HTTP GET请求。
-    // @GetMapping("/index")
-    // public Map<String, Object> getIndexData() {
-    //     Map<String, Object> context = new HashMap<>();
-    //     context.put("flag", 1);
-    //     context.put("typeList", typeService.getList());
-    //     context.put("top1List", topService.getList(Tops.TYPE_SCROLL, 1, 1));
-    //     context.put("top2List", topService.getList(Tops.TYPE_LARGE, 1, 6));
-    //     context.put("top3List", topService.getList(Tops.TYPE_SMALL, 1, 8));
-    //     return context; // 返回 JSON 数据
-    // }
+    // 前后端分离时的写法，返回JSON格式的数据
+    // @RequestMapping是一个通用的请求映射注解，可以处理所有HTTP方法（GET、POST、PUT、DELETE等）的请求。
+    // @GetMapping是@RequestMapping的一个特定变体，用于处理HTTP GET请求。
+    @GetMapping("/index")
+    public Map<String, Object> getIndexData() {
+        Map<String, Object> context = new HashMap<>();
+        context.put("flag", 1);
+        context.put("typeList", typeService.getList());
+        context.put("top1List", topService.getList(Tops.TYPE_SCROLL, 1, 1));
+        context.put("top2List", topService.getList(Tops.TYPE_LARGE, 1, 6));
+        context.put("top3List", topService.getList(Tops.TYPE_SMALL, 1, 8));
+        return context; // 返回 JSON 数据
+    }
 
 
     /**
